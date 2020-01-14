@@ -4,7 +4,7 @@ class DefaultPage extends React.Component{
     render(){
         return(
             <div>
-                <h3>HEllo from default page</h3>
+                <h3>Hello from default page</h3>
             </div>
         )
     }
