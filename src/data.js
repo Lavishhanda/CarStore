@@ -12,9 +12,9 @@ export const storeCars = [
     },
     {
         id :2,
-        title : "Range Rover Autobiography",
+        title : "JLR Autobiography",
         img : "images/Autobiography.jpg",
-        price : 100000,
+        price : 95000,
         company: "JLR By Tata",
         info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
         inCart: false,
@@ -23,7 +23,7 @@ export const storeCars = [
     },
     {
         id :3,
-        title : "Mercedes GLC 63 AMG",
+        title : "Mercedes GL 63 AMG",
         img : "images/GLC63.jpg",
         price : 80000,
         company: "Mercedes Benz",
@@ -89,7 +89,7 @@ export const storeCars = [
     }
 ]
 
-  export const detailProduct =  [
+  export const detailProduct =  
       {
         id :1,
         title : "BMW X6",
@@ -101,4 +101,4 @@ export const storeCars = [
         count:0,
         total:0
     }
-]
+
