@@ -5,11 +5,13 @@ const ProductContext = React.createContext();
 class ProductProvider extends React.Component{
     state ={
         products : [],
-        detailProduct : detailProduct
+        detailProduct : detailProduct,
+        cart : []
+        
     };
 
     componentDidMount(){
-        console.log("mount")
+        //console.log("mount")
         this.setProducts();
     }
 
@@ -24,22 +26,68 @@ class ProductProvider extends React.Component{
         })
     }
 
-    handleDetail = () => {
-        console.log("hello from detail");
+    getItem = id => {
+        const product = this.state.products.find(item => item.id===id);
+        return product;
     }
 
-    addToCart = () => {
-        console.log("hello from add to cart");
+    handleDetail = id => {
+        //console.log("hello from detail");
+        const product = this.getItem(id);
+        this.setState(()=>{
+            return {detailProduct:product}
+        })    
     }
+
+
+
+    /*addToCart = () => {
+            console.log("added to cart");
+        }*/
+
+     noAddtoCart = id => {
+        //console.log(`hello from function and id ${id}`);
+        let tempProdArray = [...this.state.products];
+        const index = tempProdArray.indexOf(this.getItem(id));
+        const product = tempProdArray[index];
+        product.inCart = true;
+        product.count = 1;
+        const price = product.price ;
+        product.total = price;
+        this.setState(() => {
+            return {products:tempProdArray, cart : [...this.state.cart, product]};
+        }, () => {
+            console.log(this.state);
+        }
+        );
+    }    
+
+    // addToCart = id => {
+    //     let tempProdArray = [...this.state.products];
+    //     const index = tempProdArray.indexOf(this.getItem(id));
+    //     const product = tempProdArray[index];
+    //     product.inCart = true;
+    //     product.count = 1;
+    //     const price = product.price ;
+    //     product.total = price;
+    //     this.setState(() => {
+    //         return {products:tempProdArray, cart : [...this.state.cart, product]};
+    //     }, () => {
+    //         console.log(this.state);
+    //     }
+    //     );
+    // }
+
     render(){
-        console.log("render")
+        //console.log("render")
         return(
             <ProductContext.Provider 
                 value ={{
-                    detailPart:this.state.detailProduct,
                     ...this.state,
+                    //addtoCart : this.addToCart,
                     handleDetail : this.handleDetail,
-                    addtoCart : this.addToCart
+                    noAddtoCart : this.noAddtoCart
+                    
                 }}
             >
                 {this.props.children}
