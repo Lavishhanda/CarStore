@@ -46,7 +46,11 @@ class Details extends React.Component
                                             back to products
                                         </ButtonContainer>
                                     </Link>
-                                    <ButtonContainer cart disabled={inCart?true:false} onClick={() => {value.addtoCart(id)}}>
+                                    <ButtonContainer cart disabled={inCart?true:false}
+                                     onClick={() => {
+                                         value.noAddtoCart(id);
+                                         value.openModal(id);
+                                         }}>
                                         {inCart ? "incart" : "addtoCart"}
                                     </ButtonContainer>
                                 </div>

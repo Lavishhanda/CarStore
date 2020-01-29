@@ -15,25 +15,29 @@ class Product extends React.Component
                     <ProductConsumer>
                         {(value) => (<div className="img-container p-4" onClick={() => value.handleDetail(id)}>
 
-<Link to="/Details">
-        <img src={img} alt="product_img" className="card-img-top">
+        <Link to="/Details">
+            <img src={img} alt="product_img" className="card-img-top">
 
-        </img>
-</Link>
-<button className="cart-btn"
-    disabled={inCart ? true : false}
-    onClick={() => { value.noAddtoCart(id) }}>
-    {inCart ? (
-    <p className="text-capitalize mb-0" disabled>
-    {" "}
-    inCart
-    </p>
-    ) : (
-    <i className="fas fa-cart-plus" />
-     )
+            </img>
+        </Link>
+        <button className="cart-btn"
+            disabled={inCart ? true : false}
+            onClick={() => { 
+                value.noAddtoCart(id);
+                console.log("model is going to be opened");
+                value.openModal(id);
+                }}>
+            {inCart ? (
+            <p className="text-capitalize mb-0" disabled>
+            {" "}
+            inCart
+            </p>
+            ) : (
+            <i className="fas fa-cart-plus" />
+            )
 }
-</button>                    
-</div> )}
+        </button>                    
+    </div> )}
                           
                     </ProductConsumer>
                     {/* This is the footer section */}

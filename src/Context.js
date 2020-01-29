@@ -6,8 +6,12 @@ class ProductProvider extends React.Component{
     state ={
         products : [],
         detailProduct : detailProduct,
-        cart : []
-        
+        cart : storeCars,
+        modalOpen : false ,
+        modalProduct : detailProduct,
+        cartSubTotal : 0,
+        cartTax : 0,
+        cartTotal : 0   
     };
 
     componentDidMount(){
@@ -78,6 +82,37 @@ class ProductProvider extends React.Component{
     //     );
     // }
 
+    openModal = id => {
+        const product = this.getItem(id);
+        this.setState ( () => {
+            return {
+                modalProduct : product, modalOpen : true
+            }
+        })
+    }
+
+    closeModal = id => {
+        this.setState ( () => {
+            return {modalOpen : false}
+        })
+    }
+
+    increment = id => {
+        console.log("this is increment method");
+    }
+
+    decrement = id => {
+        console.log("this is decrement method");
+    }
+
+    removeItem = id => {
+        console.log("item deleted");
+    }
+
+    clearTheCart = id => {
+        console.log(" Cart is empty");
+    }
+
     render(){
         //console.log("render")
         return(
@@ -86,7 +121,13 @@ class ProductProvider extends React.Component{
                     ...this.state,
                     //addtoCart : this.addToCart,
                     handleDetail : this.handleDetail,
-                    noAddtoCart : this.noAddtoCart
+                    noAddtoCart : this.noAddtoCart,
+                    openModal : this.openModal,
+                    closeModal : this.closeModal,
+                    increment : this.increment,
+                    decrement : this.decrement, 
+                    removeItem : this.removeItem,
+                    clearTheCart : this.clearTheCart
                     
                 }}
             >

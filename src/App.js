@@ -6,7 +6,8 @@ import NavBar from "./Components/NavBar.js"
 import DefaultPage from "./Components/DefaultPage.js"
 import Details from "./Components/Details.js"
 import ProductList from "./Components/ProductList.js"
-import Cart from "./Components/Cart.js"
+import Cart from "./Components/Cart/Cart.js"
+import Modal from "./Components/Modal.js"
 
 class App extends React.Component{
   render(){
@@ -19,6 +20,7 @@ class App extends React.Component{
           <Route exact path="/" component={ProductList}/>
           <Route  component={DefaultPage}/>
         </Switch>
+        <Modal/>
       </React.Fragment>
     ) 
   }
